@@ -39,7 +39,8 @@ https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classifi
     ├── <RESULT_DIR>
     ├── src 
     ├── LICENSE 
-    ├── README.md 
+    ├── README.md
+    ├── requirements.txt
 ```
 - Modify the path setting by editing  "/src/third_party/\_dir_setting_.py"
 
