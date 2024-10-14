@@ -6,7 +6,8 @@ https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classifi
 
 - For discussion, please refer to:  
 https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classification/discussion/539439
-
+  
+This repo contains the code to train one-stage models used in the team solution for the RSNA 2024 lumbar spine degenerative classification Kaggle competition.
 
 ## 1. Hardware  
 - GPU: 2x Nvidia Ada A6000 (Ampere), each with VRAM 48 GB
@@ -45,18 +46,18 @@ https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classifi
 - Modify the path setting by editing  "/src/third_party/\_dir_setting_.py"
 
 ```
-# please use full path 
-DATA_KAGGLE_DIR     = '... for downloaded and unzipped kaggle data ... '
+# please use the full path 
+DATA_KAGGLE_DIR     = '... for downloaded and unzipped Kaggle data ... '
 DATA_PROCESSED_DIR  = '... for intermediate processed data ...'
-RESULT_DIR          = '... for training ouput like model weights, training logs, etc ...'
+RESULT_DIR          = '... for training output like model weights, training logs, etc ...'
 ```
 
 ## 4. Set Up Dataset
 
-- <DATA_KAGGLE_DIR>, please download kaggle data "rsna-2024-lumbar-spine-degenerative-classification.zip" at:  
+- <DATA_KAGGLE_DIR> contains data from "rsna-2024-lumbar-spine-degenerative-classification.zip" at:  
 https://www.kaggle.com/competitions/rsna-2024-lumbar-spine-degenerative-classification/data
 
-- <DATA_PROCESSED_DIR>, the following files are created manually. They can be found in folder PROCESSED_DATA_DIR of this repo
+- <DATA_PROCESSED_DIR> contains the 3 manually created files from the DATA_PROCESSED_DIR folder in this repo.
     - train_label_coordinates.fix01b.csv: correct annotation for spinal canal stenosis point
     - nfn_sag_t1_mean_shape.512.npy, scs_sag_t2_mean.512.npy: mean reference shape created from
 https://www.kaggle.com/code/hengck23/shape-alignment
@@ -64,7 +65,7 @@ https://www.kaggle.com/code/hengck23/shape-alignment
   ```
   python "/src/process-data-01/run_make_data.py"  
   ```
-    - A backup copy of all processed data can be found from the google-share drive:
+    - A backup copy of all processed data can be found in the google-share drive:
   https://drive.google.com/drive/folders/1jPPxAP6DHGQMHJPUGjPO7_Q5Asrj_LL3?usp=sharing 
 
 
@@ -84,7 +85,7 @@ python run_train_nfn_pvtv2_b4_bugged.py
 output model:
 - <RESULT_DIR>/one-stage-nfn-bugged/pvt_v2_b4-decoder3d-01/
 ```  
-- Fixed Models: The bug was fixed last minute, a day before the deadline. We only managed to retrain and use two model weights (fold2,3 out of 5) 
+- Fixed Models: The bug was fixed at the last minute, a day before the deadline. We only managed to retrain and use two model weights (fold2,3 out of 5) 
 for submission. To train the corrected models, run:
 
 ```  
@@ -94,7 +95,7 @@ python run_train_nfn_pvtv2_b4_fixed.py
 output model:
 - <RESULT_DIR>/one-stage-nfn-fixed/pvt_v2_b4-decoder3d-01/
 ```  
-- Optional Models: These are not used in submission. We use various image backbone encoder like convnext and efficientnet for post submission
+- Optional Models: These are not used in submission. We use various image backbone encoders like convnext and efficientnet for post-submission
 experiments.
 
 
@@ -121,7 +122,7 @@ python run_ensemble_and_local_validation.py
 
 ### SCS (spinal canal stenosis) models
 
-- Optional Models: These are not used in submission as one-stage SCS models did not improve public score. 
+- Optional Models: These are not used in submission as one-stage SCS models did not improve the public lb score when added to the team solution. 
 ```  
 cd src/scs_trainer
 python run_train_scs_pvtv2_b4_fixed.py
@@ -133,7 +134,7 @@ output model:
 - <RESULT_DIR>/one-stage-scs/convnext_base-decoder2d-01/
 - <RESULT_DIR>/one-stage-scs/effnet_b4-decoder2d-01/
 ```
-- Smiliarly, if you want to ensemble and perform local validation, run the script:
+- Similarly, if you want to ensemble and perform local validation, run the script:
 
 ```
 cd src/scs_trainer
@@ -143,23 +144,24 @@ python run_ensemble_and_local_validation.py
 
 
 ## 5. Submission csv 
-Team submission motebook can be found at:  
+Team submission notebook can be found at:  
 https://www.kaggle.com/code/hengck23/lhw-v24-ensemble-add-heng
 ![Selection_506](https://github.com/user-attachments/assets/97cc87fa-5e4c-4897-8041-c651adea4eb0)
 
-Team post submission motebook can be found at:  
+Team post-submission notebook can be found at:  
 https://www.kaggle.com/code/hengck23/post-lhw-v24-ensemble-add-heng
+![Selection_507](https://github.com/user-attachments/assets/223b40f2-11e9-4321-b231-53cb2a21ce99)
 
 ## 6. Demo
 heng's part:
 ... to be updated ...
 
 ## 7. Reference trained models and validation results
-- Reference results can also be found in the share google drive at :  
+- Reference results can also be found in the shared google drive at :  
   <google-drive>/leash-BELKA-solution/result  
   https://drive.google.com/drive/folders/1jPPxAP6DHGQMHJPUGjPO7_Q5Asrj_LL3?usp=sharing
 
-- It includes the weight files, train/validation logs.
+- It includes the weight files and train/validation logs.
   
 
 ## Authors
