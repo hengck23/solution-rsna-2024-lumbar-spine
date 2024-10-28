@@ -159,7 +159,7 @@ https://www.kaggle.com/code/hengck23/clean-final-submit02-scs-nfn-ensemble
 
 ## 7. Reference trained models and validation results
 - Reference results can also be found in the shared google drive at :  
-  <google-drive>/leash-BELKA-solution/result  
+  <google-drive>/kaggle-submit-rsna-2024-spine/result  
   https://drive.google.com/drive/folders/1jPPxAP6DHGQMHJPUGjPO7_Q5Asrj_LL3?usp=sharing
 
 - It includes the weight files and train/validation logs.
