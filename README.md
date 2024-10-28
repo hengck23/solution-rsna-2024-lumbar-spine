@@ -154,7 +154,8 @@ https://www.kaggle.com/code/hengck23/post-lhw-v24-ensemble-add-heng
 
 ## 6. Demo
 heng's part:
-... to be updated ...
+https://www.kaggle.com/code/hengck23/clean-final-submit02-scs-nfn-ensemble
+
 
 ## 7. Reference trained models and validation results
 - Reference results can also be found in the shared google drive at :  
